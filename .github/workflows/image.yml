@@ -13,8 +13,13 @@ jobs:
       - name: Test environment variable
         run: echo ${{ env.RELEASE_VERSION }}
              echo ${{ github.repository }}
-      - name: Check out GitHub repo
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        name: checkout superset
+        with:
+          repository: far-eye/incubator-superset
+          path: incubator-superset
+          token: ${{ secrets.PAT_GITHUB }}
+          ref: fareye_master
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
