@@ -28,5 +28,5 @@ jobs:
       - name: Build image and push to Docker Hub
         run: |
           ls -l
-          docker build --target dev  -t saksham026/nlp-client:${{ env.RELEASE_VERSION }} ${{GITHUB_WORKSPACE}}/incubator-superset/
+          docker build --target dev  -t saksham026/nlp-client:${{ env.RELEASE_VERSION }} ${{ github.workspace }}/incubator-superset/
           docker push saksham026/nlp-client:${{ env.RELEASE_VERSION }}
