@@ -13,8 +13,8 @@ jobs:
       - name: Test environment variable
         run: echo ${{ env.RELEASE_VERSION }}
              echo ${{ github.repository }}
-      - name: Import environment variables from .devops/all.env file
-        id: import-env
+      - name: Import environment variables from DeployConfig
+        id: import-value
         env:
           ENV_FILE: ${{ github.workspace }}/DeployConfig
         shell: bash
@@ -31,7 +31,7 @@ jobs:
           repository: far-eye/incubator-superset
           path: incubator-superset
           token: ${{ secrets.PAT_GITHUB }}
-          ref: fareye_master
+          ref: "$ref_value"
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
