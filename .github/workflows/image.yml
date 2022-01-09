@@ -16,7 +16,7 @@ jobs:
       - name: Import environment variables from .devops/config.env
         id: import-value
         env:
-          ENV_FILE: /home/runner/work/nlp-client/.devops/config.env
+          ENV_FILE: ../../.devops/config.env
           
         shell: bash
         run: |
