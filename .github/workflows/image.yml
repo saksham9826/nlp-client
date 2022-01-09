@@ -13,10 +13,10 @@ jobs:
       - name: Test environment variable
         run: echo ${{ env.RELEASE_VERSION }}
              echo ${{ github.repository }}
-      - name: Import environment variables from DeployConfig
+      - name: Import environment variables from .devops/config.env
         id: import-value
         env:
-          ENV_FILE: ${{ github.workspace }}/DeployConfig
+          ENV_FILE: ${{ github.workspace }}/.devops/config.env
         shell: bash
         run: |
           cat ${{ env.ENV_FILE }}
