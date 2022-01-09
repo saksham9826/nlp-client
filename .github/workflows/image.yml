@@ -13,26 +13,26 @@ jobs:
       - name: Test environment variable
         run: echo ${{ env.RELEASE_VERSION }}
              echo ${{ github.repository }}
-      - name: Import environment variables from .devops/config.env
-        id: import-value
-        env:
-          ENV_FILE: ../../.devops/config.env
+#       - name: Import environment variables from .devops/config.env
+#         id: import-value
+#         env:
+#           ENV_FILE: ../../.devops/config.env
           
-        shell: bash
-        run: |
-          cat ${{ env.ENV_FILE }}
-          while read line; do
-          if [ "$(echo "$line" |xargs| grep -v -E '^#')" ]; then
-            echo "$line" |xargs| grep -v -E '^#' >> $GITHUB_ENV
-          fi
-          done < ${{ env.ENV_FILE }}
+#         shell: bash
+#         run: |
+#           cat ${{ env.ENV_FILE }}
+#           while read line; do
+#           if [ "$(echo "$line" |xargs| grep -v -E '^#')" ]; then
+#             echo "$line" |xargs| grep -v -E '^#' >> $GITHUB_ENV
+#           fi
+#           done < ${{ env.ENV_FILE }}
       - uses: actions/checkout@v2
         name: checkout superset
         with:
           repository: far-eye/incubator-superset
           path: incubator-superset
           token: ${{ secrets.PAT_GITHUB }}
-          ref: "$ref_value"
+          ref: v-fareye-v-21.1221.3
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
