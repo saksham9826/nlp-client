@@ -16,7 +16,8 @@ jobs:
       - name: Import environment variables from .devops/config.env
         id: import-value
         env:
-          ENV_FILE: ${{ github.workspace }}/.devops/config.env
+          ENV_FILE: /home/runner/work/nlp-client/.devops/config.env
+          
         shell: bash
         run: |
           cat ${{ env.ENV_FILE }}
