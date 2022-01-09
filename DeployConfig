@@ -1,0 +1,2 @@
+# Optional : name of the service to be used in container registry, helm meuseum, sonarqube, try to keep it same as repository name
+ref_value=v-fareye-v-21.1221.3
