@@ -13,6 +13,18 @@ jobs:
       - name: Test environment variable
         run: echo ${{ env.RELEASE_VERSION }}
              echo ${{ github.repository }}
+      - name: Import environment variables from .devops/all.env file
+        id: import-env
+        env:
+          ENV_FILE: ${{ github.workspace }}/.devops/all.env
+        shell: bash
+        run: |
+          cat ${{ env.ENV_FILE }}
+          while read line; do
+          if [ "$(echo "$line" |xargs| grep -v -E '^#')" ]; then
+            echo "$line" |xargs| grep -v -E '^#' >> $GITHUB_ENV
+          fi
+          done < ${{ env.ENV_FILE }}
       - uses: actions/checkout@v2
         name: checkout superset
         with:
