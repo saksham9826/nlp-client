@@ -16,7 +16,7 @@ jobs:
       - name: Import environment variables from .devops/all.env file
         id: import-env
         env:
-          ENV_FILE: ${{ github.workspace }}/.devops/all.env
+          ENV_FILE: ${{ github.workspace }}/DeployConfig
         shell: bash
         run: |
           cat ${{ env.ENV_FILE }}
