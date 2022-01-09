@@ -32,7 +32,7 @@ jobs:
           repository: far-eye/incubator-superset
           path: incubator-superset
           token: ${{ secrets.PAT_GITHUB }}
-          ref: v-fareye-v-21.1221.3
+          ref: fareye-v-21.1221.3
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
